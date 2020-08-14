@@ -10,17 +10,17 @@ namespace TheTreats.Controllers
       return View();
     }
 
-    [HttpPost]
-    public ActionResult Index(string searchOption, string searchString)
-    {
-      if (searchOption == "flavors")
-      {
-        return RedirectToAction("Index", "Flavors", new {name = searchString});
-      }
-      else if (searchOption == "treats")
-      {
-        return RedirectToAction("Index", "Treats", new {name = searchString});
-      }
-    }
+    // [HttpPost]
+    // public ActionResult Index(string searchOption, string searchString)
+    // {
+    //   if (searchOption == "flavors")
+    //   {
+    //     return RedirectToAction("Index", "Flavors", new {name = searchString});
+    //   }
+    //   else if (searchOption == "treats")
+    //   {
+    //     return RedirectToAction("Index", "Treats", new {name = searchString});
+    //   }
+    // } 
   }
 }

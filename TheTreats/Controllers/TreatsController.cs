@@ -85,12 +85,6 @@ namespace TheTreats.Cotrollers
     [HttpPost]
     public ActionResult Edit(Treat treat, int FlavorId)
     {
-      // var existingConnection = _db.FlavorTreat.FirstOrDefault(join => join.TreatId == treat.TreatId && join.FlavorId == FlavorId);
-
-      // if (existingConnection != null)
-      // {
-      //   return RedirectToAction("Details", new {id = treat.TreatId});
-      // }
       if (FlavorId != 0)
       {
         _db.FlavorTreat.Add(new FlavorTreat() { FlavorId = FlavorId, TreatId = treat.TreatId }); 
