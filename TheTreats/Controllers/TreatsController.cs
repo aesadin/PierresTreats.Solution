@@ -43,8 +43,8 @@ namespace TheTreats.Cotrollers
     [HttpPost]
     public async Task<ActionResult> Create(Treat treat, int FlavorId)
     {
-      var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value; // if condition to the left of '?' is true, then get the value and save as userId variable
-      var currentUser = await _userManager.FindByIdAsync(userId); // use user manager to grab user object by the user id that we created on the liine above.
+      var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value; 
+      var currentUser = await _userManager.FindByIdAsync(userId); 
       treat.User = currentUser;
       _db.Treats.Add(treat);
       if (FlavorId != 0)
@@ -58,11 +58,11 @@ namespace TheTreats.Cotrollers
     [Authorize]
     public ActionResult Details(int id)
     {
-      Treat thisTreat = _db.Treats // defines treat object including all treats
-        .Include(treat => treat.Flavors) // only look at the flavors part of the treat object
-        .ThenInclude(join => join.Flavor) // only look for the flavor portion of treatflavor table
+      Treat thisTreat = _db.Treats 
+        .Include(treat => treat.Flavors) 
+        .ThenInclude(join => join.Flavor) 
         .Include(treat => treat.User)
-        .FirstOrDefault(treat => treat.TreatId == id); // grab the first treat Id that matches the int Id we passed as argument, if there is no Id then return null
+        .FirstOrDefault(treat => treat.TreatId == id); 
       var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
       ViewBag.IsCurrentUser = userId != null ? userId == thisTreat.User.Id : false;    
       return View(thisTreat);
@@ -78,7 +78,7 @@ namespace TheTreats.Cotrollers
       {
         return RedirectToAction("Details", new {id = id});
       }
-      ViewBag.FlavorId = new SelectList(_db.Flavors, "FlavorId", "Name"); // thing that comes after ViewBag. is the name of your viewbag. Selectlist object takes 3 arguments: all the data that you want included, what value you want this clickable 'Name' to have, what you want displayed to user
+      ViewBag.FlavorId = new SelectList(_db.Flavors, "FlavorId", "Name"); 
       return View(thisTreat);
     }
 
@@ -93,9 +93,9 @@ namespace TheTreats.Cotrollers
       // }
       if (FlavorId != 0)
       {
-        _db.FlavorTreat.Add(new FlavorTreat() { FlavorId = FlavorId, TreatId = treat.TreatId }); // add to the FlavorTreat database a new instance of treatflavor with both the flavorId and the treatId from the treat object passed as argument
+        _db.FlavorTreat.Add(new FlavorTreat() { FlavorId = FlavorId, TreatId = treat.TreatId }); 
       }
-      _db.Entry(treat).State = EntityState.Modified; // if we change an existing object, we will get errors unless we first change its entity state to modified, this is so the computer can keep track of modifications without changing the unique Ids of thes treats
+      _db.Entry(treat).State = EntityState.Modified; 
       _db.SaveChanges();
       return RedirectToAction("Index");
     }
@@ -160,24 +160,6 @@ namespace TheTreats.Cotrollers
       }
       _db.SaveChanges();
       return RedirectToAction("Index");
-    }
-
-    public ActionResult AddIngredient(int id)
-    {
-      
-      Treat thisTreat = _db.Treats.FirstOrDefault(treats => treats.TreatId == id);
-      ViewBag.Ingredients = _db.Ingredients;
-      return View(thisTreat);
-    }
-
-    [HttpPost]
-    public ActionResult AddIngredient(Treat treat, int IngredientId)
-    {
-      Treat thisTreat = _db.Treats.FirstOrDefault(treats => treats.TreatId == treat.TreatId);
-      Ingredient thisIngredient = _db.Ingredients.FirstOrDefault(ingredients => ingredients.IngredientId == IngredientId);
-      thisTreat.Ingredients.Add(thisIngredient);
-      _db.SaveChanges();
-      return View();
     }
   }
 }
