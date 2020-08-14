@@ -11,7 +11,7 @@
 @if(Model.Any())
 {
   <ul>
-  @foreach(Treat Treat in Model)
+  @foreach(Treat treat in Model)
   {
     <li><p>@Html.ActionLink($"{treat.Name}", "Details", new { id = treat.TreatId})</p></li>
   }

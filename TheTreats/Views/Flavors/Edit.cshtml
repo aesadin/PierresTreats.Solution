@@ -6,13 +6,13 @@
 
 <h1>Edit Flavor</h1>
 <hr/>
-@Html.DisplayNameFor(model => model.Name): @Html.DisplayFor(model => model.Name)
+@Html.DisplayNameFor(model => model.FlavorName): @Html.DisplayFor(model => model.FlavorName)
 <br>
 @using (Html.BeginForm())
 {
   @Html.HiddenFor(model => model.FlavorId)
-  @Html.LabelFor(model => model.Name)
-  @Html.EditorFor(model => model.Name)
+  @Html.LabelFor(model => model.FlavorName)
+  @Html.EditorFor(model => model.FlavorName)
   <br>
   @Html.Label("Select Treat")
   @Html.DropDownList("TreatId")
