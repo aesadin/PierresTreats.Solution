@@ -1,0 +1,27 @@
+@{
+  Layout = "_Layout";
+}
+
+@using TheTreats.Models;
+@using TheTreats.ViewModels;
+@using System.Security.Claims
+@model IEnumerable<TheTreats.Models.Flavor>
+
+<h1>@User.Identity.Name's Flavors</h1>
+<hr/>
+@if(Model.Any())
+{
+  <ul>
+  @foreach(Flavor Flavor in Model)
+  {
+    <li><p>@Html.ActionLink($"{flavor.Name}", "Details", new { id = flavor.FlavorId})</p></li>
+  }
+  </ul>
+}
+else
+{
+  <p>No Flavors have been added yet!</p>
+}
+<br>
+<p>@Html.ActionLink("Add new flavor", "Create")</p>
+<p>@Html.ActionLink("Home", "Index", "Home")</p>
