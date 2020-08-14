@@ -1,0 +1,35 @@
+@{
+  Layout = "_Layout";
+}
+
+@model TheTreats.Models.Flavor
+
+<h1>Flavor Details</h1>
+<hr/>
+<h3>@Html.DisplayNameFor(model => model.Name): @Html.DisplayFor(model => model.Name)</h3>
+<br>
+@if(@Model.Treats.Count == 0)
+{
+  <p>This Flavor has not yet been assigned to a Treat</p>
+}
+else
+{
+  <h4>This Flavors associated Treat:</h4>
+  <ul>
+  @foreach(var join in Model.Treats)
+  {
+    <li><p>@join.Treat.Name</p></li>
+    @using (Html.BeginForm("DeleteTreat", "Flavors"))
+    {
+      @Html.Hidden("joinId", @join.TreatFlavorId)
+      <input type="submit" value="Delete"/>
+    }
+  }
+  </ul>
+}
+<br>
+<p>@Html.ActionLink("Edit Flavor", "Edit", new { id = Model.FlavorId})</p>
+<p>@Html.ActionLink("Delete Flavor", "Delete", new { id = Model.FlavorId })</p>
+<p>@Html.ActionLink("Add Flavor", "AddFlavor", new { id = Model.FlavorId })</p>
+<p>@Html.ActionLink("Back to Flavors", "Index")</p>
+<p>@Html.ActionLink("Home", "Index", "Home")</p>
