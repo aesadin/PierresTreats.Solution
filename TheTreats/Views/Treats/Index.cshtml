@@ -1,0 +1,29 @@
+@{
+  Layout = "_Layout";
+}
+
+@using TheTreats.Models;
+@using System.Security.Claims
+@model IEnumerable<TheTreats.Models.Treat>
+
+<h1>@User.Identity.Name's Treats</h1>
+<hr/>
+@if(Model.Any())
+{
+  <ul>
+  @foreach(Treat Treat in Model)
+  {
+    <li><p>@Html.ActionLink($"{treat.Name}", "Details", new { id = treat.TreatId})</p></li>
+  }
+  </ul>
+}
+else
+{
+  <p>No Treats have been added yet!</p>
+}
+<br>
+@if (User.Identity.IsAuthenticated)
+{
+  <p>@Html.ActionLink("Add new Treat", "Create")</p>
+}
+<p>@Html.ActionLink("Home", "Index", "Home")</p>
