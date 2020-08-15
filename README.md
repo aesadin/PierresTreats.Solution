@@ -22,7 +22,7 @@
 
 **ABOUT**
 
-An application that allows the user to create a list of engineers and a list of machines. The user may assign machines to engineers who are licensed to work on them. The user may add and delete both machines and engineers. 
+An application that allows the user to create an account, login and then create a list of treats and a list of flavors, both sweet and savory. The user may assign flavors to treats. The user may add and delete both flavors and treats as well. 
 
 
 ## **REQUIREMENTS**
@@ -92,7 +92,7 @@ An application that allows the user to create a list of engineers and a list of 
 
 copy this url to clone this project to your local system:
 ```html
-https://github.com/tmemmerson/Sneuss.Solution.git
+https://github.com/aesadin/PierresTreats.Solution.git
 ```
 
 <br>
@@ -122,7 +122,7 @@ Once copied, select "Clone Repository" from within VSCode & paste the copied lin
 ![cloning](https://coding-assets.s3-us-west-2.amazonaws.com/img/dotnet-readme.gif "How to clone repo")
 
 
-## **🔧PROTECTING YOUR DATA**
+## **PROTECTING YOUR DATA**
 
 #### **Step 1: From within VSCode in the root project directory, we will create a .gitignore file**
 
