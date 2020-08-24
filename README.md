@@ -32,51 +32,27 @@ An application that allows the user to create an account, login and then create 
 * Install [Visual Studio Code](https://code.visualstudio.com/)
 * Install [MySql Workbench](https://www.mysql.com/products/workbench/)
 
- ## **SPECIFICATIONS**
+ <br>
 
-1. **Behavior:** The user is welcomed with a splash page and given the option to view Machines or view Engineers.
-* **Input Example:** "View Machines" or "Add a new Machine"
-* **Output Example:** /Machines or /Engineers 
+  * _Running Migration to Create the Database_
+    1. _To create the initial migration folder run the following command in the terminal after navigating into `> cd TheTreats` _
 
-2. **Behavior:** When the user navigates to "View Machines" a list of all Machines will be displayed, if there are no Machines the message "There are currently no Machines listed" and given the option to "Add a Machine".
-* **Input Example:** "Add a Machine"
-* **Output Example:** /Machines/Create
+    ```js 
+    dotnet ef migrations add Initial 
+    ```
+    2. _Then run the following command next_
 
-3. **Behavior:** If the user navigates to "Add a Machine" the program will allow the user to add a new Machine and then be directed to Machines.
-* **Input Example:** "Add new Machine"
-* **Output Example:** /Machines
+    ```js
+    dotnet ef database update
+    ```
 
-4. **Behavior:** The program will allow the user to click on a Machine.
-* **Input Example:** "Vending Machine"
-* **Output Example:** /Machines/Details/{MachinesId}
+    3. _To make sure this migration successfully created a database, open workbench and refresh to see if the database allison_sadin is listed in the schemas _
+    4. _Anytime a change is intended to be made to the database, both migration commands must be run, however a different title must be given other than "Initial" that includes a short description. An example is given below._
 
-5. **Behavior:** The program will allow the user to view all Engineers.
-* **Input Example:** "View Engineers"
-* **Output Example:** /Engineers
-
-6. **Behavior:** The program will allow the user to add a new Engineer to a specific Machine.
-* **Input Example:** "Add an Engineer"
-* **Output Example:** /Engineers/Create
-
-7. **Behavior:** The program will allow the user to view Engineer details.
-* **Input Example:** "Allison Sadin"
-* **Output Example:** /Engineers/Details/{EngineersId}
-
-8. **Behavior:** The program will allow the user to edit Engineer details.
-* **Input Example:** "Edit This Engineer"
-* **Output Example:** /Engineers/Edit/{EngineersId}
-
-9. **Behavior:** The program will allow the user to edit Machine details.
-* **Input Example:** "Edit This Machine"
-* **Output Example:** /Machines/Edit/{MachinesId}
-
-10. **Behavior:** The program will allow the user to delete Machine details.
-* **Input Example:** "Delete This Machine"
-* **Output Example:** /Machines/Delete/{MachinesId}
-
-10. **Behavior:** The program will allow the user to delete Engineer details.
-* **Input Example:** "Delete This Engineer"
-* **Output Example:** /Engineers/Delete/{EngineersId}
+     ```js 
+    dotnet ef migrations add CustomerTable 
+    ```
+    
 
 
 <br>

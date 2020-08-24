@@ -36,7 +36,7 @@ namespace TheTreats.Cotrollers
     {
       var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
       var thisUsersFlavors = _db.Flavors.Where(entry => entry.User.Id == userId);
-      ViewBag.FlavorId = new SelectList(thisUsersFlavors, "FlavorId", "Name");
+      ViewBag.FlavorId = new SelectList(thisUsersFlavors, "FlavorId", "FlavorName");
       return View(); 
     }
 
@@ -78,7 +78,7 @@ namespace TheTreats.Cotrollers
       {
         return RedirectToAction("Details", new {id = id});
       }
-      ViewBag.FlavorId = new SelectList(_db.Flavors, "FlavorId", "Name"); 
+      ViewBag.FlavorId = new SelectList(_db.Flavors, "FlavorId", "FlavorName"); 
       return View(thisTreat);
     }
 
@@ -136,7 +136,7 @@ namespace TheTreats.Cotrollers
       {
         return RedirectToAction("Details", new {id = id});
       }
-      ViewBag.FlavorId = new SelectList(_db.Flavors, "FlavorId", "Name");
+      ViewBag.FlavorId = new SelectList(_db.Flavors, "FlavorId", "FlavorName");
       return View(thisTreat);
     }
 
