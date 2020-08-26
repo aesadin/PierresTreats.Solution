@@ -4,7 +4,7 @@
 
 @model TheTreats.Models.Flavor
 
-<h1>Tag Details</h1>
+<h1>Flavor Details</h1>
 <hr/>
 <h3>@Html.DisplayNameFor(model => model.FlavorName): @Html.DisplayFor(model => model.FlavorName)</h3>
 <br>
@@ -29,7 +29,6 @@ else
 }
 <br>
 <p>@Html.ActionLink("Edit flavor", "Edit", new { id = Model.FlavorId})</p>
-<p>@Html.ActionLink("Delete flavor", "Delete", new { id = Model.FlavorId })</p>
-<p>@Html.ActionLink("Add flavor", "AddFlavor", new { id = Model.FlavorId })</p>
+<p>@Html.ActionLink("Delete Flavor", "Delete", new { id = Model.FlavorId })</p>
 <p>@Html.ActionLink("Back to flavors", "Index")</p>
 <p>@Html.ActionLink("Home", "Index", "Home")</p>
